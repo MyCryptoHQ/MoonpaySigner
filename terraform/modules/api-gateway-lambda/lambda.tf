@@ -2,7 +2,7 @@ resource "aws_lambda_function" "moonpay-signer" {
   filename      = var.filename
   function_name = "moonpay-signer-lambda-${var.environment}"
   role          = aws_iam_role.lambda_exec.arn
-  handler       = "bin/app"
+  handler       = "bin/moonpaysigner"
   timeout       = 600
 
   source_code_hash = filebase64sha256(var.filename)
