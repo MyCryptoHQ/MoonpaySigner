@@ -13,3 +13,9 @@ variable "filename" {
   default     = ""
   description = ""
 }
+
+variable "endpoint" {
+  type        = string
+  description = "Name of api endpoint."
+  default     = "moonpay.mycryptoapi.com"
+}

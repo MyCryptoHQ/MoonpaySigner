@@ -101,3 +101,8 @@ resource "aws_api_gateway_deployment" "moonpay_v1" {
   stage_name  = var.environment
 }
 
+resource "aws_api_gateway_base_path_mapping" "moonpayDev" {
+  api_id      = aws_api_gateway_rest_api.moonpay_api_gateway.id
+  stage_name  = aws_api_gateway_deployment.moonpay_v1.stage_name
+  domain_name = var.endpoint
+}
