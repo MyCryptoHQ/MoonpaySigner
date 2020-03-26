@@ -33,11 +33,11 @@ func HandleRequest(ctx context.Context, postObject events.APIGatewayProxyRequest
 			Success:   false,
 		}
 		r, _ := json.Marshal(resp)
-		// TODO not sure about the status code here
+
 		return events.APIGatewayProxyResponse{
 			Headers:    map[string]string{"content-type": "application/json", "Access-Control-Allow-Origin": "*"},
 			Body:       string(r),
-			StatusCode: 404,
+			StatusCode: 400,
 		}, errors.New("No MOONPAY_SECRET_KEY found.")
 	}
 	signedMessage := crypto.SignMessage(url, secretKey)
