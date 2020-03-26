@@ -1,15 +1,15 @@
 
 variable "environment" {
   description = ""
-  default = ""
+  default     = ""
 }
 
 variable "moonpay_secret_key" {
   description = ""
-  default = ""
+  default     = ""
 }
 
 variable "filename" {
-  default = ""
+  default     = ""
   description = ""
 }
