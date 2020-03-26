@@ -1,0 +1,10 @@
+# binaries
+bin/
+
+# terraform
+.terraform*
+terraform.tfstate*
+terraform.tfstate.*
+
+# jetbrains
+.idea/
