@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
 	"context"
 	"errors"
-	"github.com/mycryptohq/moonpaysigner/crypto"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/mycryptohq/moonpaysigner/crypto"
+	"os"
 )
 
 type PostObjectReceived struct {
@@ -14,7 +14,7 @@ type PostObjectReceived struct {
 
 type PostObjectReturned struct {
 	Signature string `json:"signature"`
-	Success bool		`json:"success"`
+	Success   bool   `json:"success"`
 }
 
 func HandleRequest(ctx context.Context, postObject PostObjectReceived) (PostObjectReturned, error) {
@@ -23,12 +23,12 @@ func HandleRequest(ctx context.Context, postObject PostObjectReceived) (PostObje
 	if success == false {
 		return PostObjectReturned{
 			Signature: "",
-			Success: false}, errors.New("No MOONPAY_SECRET_KEY found.")
+			Success:   false}, errors.New("No MOONPAY_SECRET_KEY found.")
 	}
 	signedMessage := crypto.SignMessage(url, secretKey)
 	return PostObjectReturned{
 		Signature: signedMessage,
-		Success: true}, nil
+		Success:   true}, nil
 }
 
 func main() {
