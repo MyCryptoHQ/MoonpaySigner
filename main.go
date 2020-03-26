@@ -1,16 +1,36 @@
 package main
 
 import (
-	"fmt"
 	"os"
-	"github.com/MyCryptoHQ/moonpaysigner/crypto"
+	"context"
+	"errors"
+	"github.com/mycryptohq/moonpaysigner/crypto"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
-func main(url string) {
-	fmt.Println("url", url)
-	secretKey := os.GetEnv("MOONPAY_SECRET_KEY")
-	fmt.Println("secretKey", secretKey)
+type PostObjectReceived struct {
+	UrlToSign string `json:"urlToSign"`
+}
+
+type PostObjectReturned struct {
+	Signature string `json:"signature"`
+	Success bool		`json:"success"`
+}
+
+func HandleRequest(ctx context.Context, postObject PostObjectReceived) (PostObjectReturned, error) {
+	url := postObject.UrlToSign
+	secretKey, success := os.LookupEnv("MOONPAY_SECRET_KEY")
+	if success == false {
+		return PostObjectReturned{
+			Signature: "",
+			Success: false}, errors.New("No MOONPAY_SECRET_KEY found.")
+	}
 	signedMessage := crypto.SignMessage(url, secretKey)
-	fmt.Println("signedMessage", signedMessage)
-	return signedMessage
+	return PostObjectReturned{
+		Signature: signedMessage,
+		Success: true}, nil
+}
+
+func main() {
+	lambda.Start(HandleRequest)
 }
