@@ -1,15 +1,21 @@
 
 variable "environment" {
   description = ""
-  default = ""
+  default     = ""
 }
 
 variable "moonpay_secret_key" {
   description = ""
-  default = ""
+  default     = ""
 }
 
 variable "filename" {
-  default = ""
+  default     = ""
   description = ""
+}
+
+variable "endpoint" {
+  type        = string
+  description = "Name of api endpoint."
+  default     = ""
 }
