@@ -4,8 +4,8 @@ data "aws_route53_zone" "mycryptoapi_hosted_zone" {
 }
 
 resource "aws_api_gateway_domain_name" "moonpay" {
-  domain_name = var.endpoint
-	certificate_arn = aws_acm_certificate_validation.moonpay_acm_validation.certificate_arn
+  domain_name     = var.endpoint
+  certificate_arn = aws_acm_certificate_validation.moonpay_acm_validation.certificate_arn
 }
 
 # Example DNS record using Route53.
