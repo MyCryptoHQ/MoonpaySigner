@@ -1,5 +1,6 @@
 module "api-gateway-lambda" {
-  environment = "dev"
-  source = "./modules/api-gateway-lambda"
-  filename = "../moonpaysigner.zip"
+  environment = "prod"
+  source      = "./modules/api-gateway-lambda"
+  filename    = "../moonpaysigner.zip"
+  endpoint    = var.endpoint
 }
