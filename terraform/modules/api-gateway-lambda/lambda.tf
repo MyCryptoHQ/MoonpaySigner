@@ -51,8 +51,8 @@ resource "aws_lambda_permission" "lambda_permission" {
 }
 
 resource "aws_api_gateway_rest_api" "moonpay_api_gateway" {
-  name = "MoonpaySigner"
-	description = "The signer REST API"
+  name        = "MoonpaySigner"
+  description = "The signer REST API"
   endpoint_configuration {
     types = ["EDGE"]
   }
