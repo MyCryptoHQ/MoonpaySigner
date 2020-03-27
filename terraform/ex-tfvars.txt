@@ -1,0 +1,4 @@
+endpoint           = "moonpay.example.com"
+profile            = "default"
+region             = "us-east-1"
+moonpay_secret_key = "secret_key"
