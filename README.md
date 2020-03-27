@@ -6,6 +6,9 @@ Creates a moonpay signer with your secret key that exposes a CORS-enabled POST e
 
 #### To Deploy:
 
+##### Requires:
+`git`, `terraform`, `aws cli`
+
 1) `git clone https://github.com/mycryptohq/moonpaysigner.git`
 2) `cd moonpaysigner/terraform`
 3) `cp ex-tfvars.txt terraform.tfvars` // copies the example tfvars file to a new tfvars file.
