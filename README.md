@@ -4,7 +4,7 @@ A Golang Moonpay.io signer
 
 #### Description:
 
-Creates a moonpay signer with your secret key that exposes a CORS-enabled POST endpoint at **moonpay._[your_root_domain]_.com/sign**, to sign query-strings as specified in the moonpay.io/getting-started documentation
+Creates a moonpay signer with your secret key that exposes a CORS-enabled POST endpoint at **moonpay._[your_root_domain]_.com/sign**, to sign query-strings as specified in the [moonpay.io/getting_started](https://www.moonpay.io/getting_started/) documentation
 
 ##### Requires:
 
