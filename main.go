@@ -35,7 +35,12 @@ func HandleRequest(ctx context.Context, postObject events.APIGatewayProxyRequest
 		r, _ := json.Marshal(resp)
 
 		return events.APIGatewayProxyResponse{
-			Headers:    map[string]string{"content-type": "application/json", "Access-Control-Allow-Origin": "*"},
+			Headers: map[string]string{
+				"X-Requested-With":             "'*'",
+				"Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with'",
+				"Access-Control-Allow-Origin":  "'*'",
+				"Access-Control-Allow-Methods": "'POST,GET,OPTIONS'",
+			},
 			Body:       string(r),
 			StatusCode: 400,
 		}, errors.New("No MOONPAY_SECRET_KEY found.")
@@ -47,7 +52,12 @@ func HandleRequest(ctx context.Context, postObject events.APIGatewayProxyRequest
 	}
 	r, _ := json.Marshal(resp)
 	response := events.APIGatewayProxyResponse{
-		Headers:    map[string]string{"content-type": "application/json", "Access-Control-Allow-Origin": "*"},
+		Headers: map[string]string{
+			"X-Requested-With":             "'*'",
+			"Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with'",
+			"Access-Control-Allow-Origin":  "'*'",
+			"Access-Control-Allow-Methods": "'POST,GET,OPTIONS'",
+		},
 		Body:       string(r),
 		StatusCode: 200,
 	}

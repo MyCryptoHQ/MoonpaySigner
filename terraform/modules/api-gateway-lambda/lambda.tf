@@ -77,21 +77,17 @@ resource "aws_api_gateway_integration" "request_method_integration" {
   depends_on = [aws_lambda_function.moonpay-signer]
 }
 
-//resource "aws_api_gateway_integration_response" "integration_response" {
-//  rest_api_id = aws_api_gateway_rest_api.moonpay_api_gateway.id
-//  resource_id = aws_api_gateway_resource.gateway_resource.id
-//  http_method = aws_api_gateway_method.request_method.http_method
-//  status_code = 200
-//  depends_on  = ["aws_api_gateway_integration.request_method_integration"]
-//
-//  response_models = {
-//    "application/json" = "Empty"
-//  }
-//}
+resource "aws_api_gateway_integration_response" "integration_response" {
+  rest_api_id = aws_api_gateway_rest_api.moonpay_api_gateway.id
+  resource_id = aws_api_gateway_method.request_method.resource_id
+  http_method = aws_api_gateway_method.request_method.http_method
+  status_code = 200
+  depends_on  = [aws_api_gateway_integration.request_method_integration]
+}
 
 resource "aws_api_gateway_deployment" "moonpay_v1" {
   depends_on = [
-		aws_api_gateway_integration.options_integration,
+    aws_api_gateway_integration.options_integration,
     aws_api_gateway_integration.request_method_integration,
   ]
 
