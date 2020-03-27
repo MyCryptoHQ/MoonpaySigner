@@ -60,7 +60,7 @@ resource "aws_api_gateway_rest_api" "moonpay_api_gateway" {
 
 resource "aws_api_gateway_method" "request_method" {
   rest_api_id   = aws_api_gateway_rest_api.moonpay_api_gateway.id
-  resource_id   = aws_api_gateway_rest_api.moonpay_api_gateway.root_resource_id
+  resource_id   = aws_api_gateway_resource.cors_resource.id
   http_method   = "POST"
   authorization = "NONE"
 }
@@ -74,7 +74,10 @@ resource "aws_api_gateway_integration" "request_method_integration" {
   type                    = "AWS_PROXY"
   uri                     = aws_lambda_function.moonpay-signer.invoke_arn
 
-  depends_on = [aws_lambda_function.moonpay-signer]
+  depends_on = [
+    aws_lambda_function.moonpay-signer,
+    aws_api_gateway_method.request_method
+  ]
 }
 
 resource "aws_api_gateway_integration_response" "integration_response" {

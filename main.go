@@ -36,10 +36,10 @@ func HandleRequest(ctx context.Context, postObject events.APIGatewayProxyRequest
 
 		return events.APIGatewayProxyResponse{
 			Headers: map[string]string{
-				"X-Requested-With":             "'*'",
-				"Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with'",
-				"Access-Control-Allow-Origin":  "'*'",
-				"Access-Control-Allow-Methods": "'POST,GET,OPTIONS'",
+				"X-Requested-With":             "*",
+				"Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+				"Access-Control-Allow-Origin":  "*",
+				"Access-Control-Allow-Methods": "POST,OPTIONS",
 			},
 			Body:       string(r),
 			StatusCode: 400,
@@ -53,10 +53,10 @@ func HandleRequest(ctx context.Context, postObject events.APIGatewayProxyRequest
 	r, _ := json.Marshal(resp)
 	response := events.APIGatewayProxyResponse{
 		Headers: map[string]string{
-			"X-Requested-With":             "'*'",
-			"Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with'",
-			"Access-Control-Allow-Origin":  "'*'",
-			"Access-Control-Allow-Methods": "'POST,GET,OPTIONS'",
+			"X-Requested-With":             "*",
+			"Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+			"Access-Control-Allow-Origin":  "*",
+			"Access-Control-Allow-Methods": "POST,OPTIONS",
 		},
 		Body:       string(r),
 		StatusCode: 200,
