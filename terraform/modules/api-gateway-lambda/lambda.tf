@@ -91,6 +91,7 @@ resource "aws_api_gateway_integration" "request_method_integration" {
 
 resource "aws_api_gateway_deployment" "moonpay_v1" {
   depends_on = [
+		aws_api_gateway_integration.options_integration,
     aws_api_gateway_integration.request_method_integration,
   ]
 
