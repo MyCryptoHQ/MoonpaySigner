@@ -11,5 +11,10 @@ variable "region" {
 variable "endpoint" {
   type        = string
   description = "Name of api endpoint."
+  default     = "moonpay.mycryptoapi.com"
+}
+
+variable "moonpay_secret_key" {
+  description = ""
   default     = ""
 }

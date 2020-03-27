@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "moonpay-signer-tf-dev"
+    bucket = "moonpay-tf-prod"
     key    = "terraform.tfstate"
     region = "us-east-1"
   }

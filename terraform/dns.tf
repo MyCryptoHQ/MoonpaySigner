@@ -16,7 +16,7 @@ locals {
 }
 
 data "aws_route53_zone" "mycryptoapi_hosted_zone" {
-  name         = "mycryptodev.com." // ToDo: Change to mycryptoapi.com in prod? :-)
+  name         = "mycryptoapi.com."
   private_zone = false
 }
 
